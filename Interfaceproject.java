@@ -1,5 +1,11 @@
-
 import java.util.Scanner;
+
+interface company
+{
+    void cab();
+    void pf();
+}
+
 
 abstract class Emp
 {
@@ -28,7 +34,7 @@ abstract class Emp
 	public abstract void raiseSalry();
 	
 }
-final class Manager extends Emp
+final class Manager extends Emp implements company
 {	
 	Manager()
 	{
@@ -43,9 +49,19 @@ final class Manager extends Emp
         System.out.println("salary: "+ salary);
 	}
 
+    public void cab()
+    {
+        System.out.println("Cab is allocated for manager");
+    }
+
+    public void pf()
+    {
+        System.out.println(" manager's pf");
+    }
+
 
 }
- final class Tester extends Emp
+ final class Tester extends Emp implements company
 {
 	
 	int salary=300000;
@@ -60,8 +76,18 @@ final class Manager extends Emp
 
         System.out.println("salary: "+ salary);
 	}
+
+    public void cab()
+    {
+        System.out.println("Cab is allocated for manager");
+    }
+
+    public void pf()
+    {
+        System.out.println(" manager's pf");
+    }
 }
- final class Dev extends Emp
+ final class Dev extends Emp implements company
 {
 	Dev()
 	{
@@ -75,8 +101,18 @@ final class Manager extends Emp
 
         System.out.println("salary: "+ salary);
 	}
+
+    public void cab()
+    {
+        System.out.println("Cab is allocated for manager");
+    }
+
+    public void pf()
+    {
+        System.out.println(" manager's pf");
+    }
 }
-final class Clerk extends Emp
+final class Clerk extends Emp implements company
 {
 	Clerk()
 	{	
@@ -90,8 +126,18 @@ final class Clerk extends Emp
 
         System.out.println("salary: "+ salary);
 	}
+
+    public void cab()
+    {
+        System.out.println("Cab is allocated for manager");
+    }
+
+    public void pf()
+    {
+        System.out.println(" manager's pf");
+    }
 }	
-public class AbstractionProject
+public class Interfaceproject
 {
 	public static void main(String args[])
 	{
@@ -100,11 +146,13 @@ public class AbstractionProject
 		Tester t=null;
         Manager m=null;
         Clerk c=null;
+        
 		do{
 			System.out.println("1) Create");
 			System.out.println("2) Display");
 			System.out.println("3) Raise Salary");
-			System.out.println("4) Exit");
+            System.out.println("4) Facilities");
+			System.out.println("5) Exit");
 
 			Scanner sc = new Scanner(System.in);
 			System.out.print("Enter the choice :");
@@ -186,7 +234,44 @@ public class AbstractionProject
                 }while(ch2!=5);
                     
 			}
-			if(ch1==4)
+
+            else if(ch1==4)
+            {
+                do{
+					System.out.println("facilitiess .............!");
+                    System.out.println("Enter whose facility you want to see: 1. developer\n 2.clerk\n 3.tester\n 4.manager\n 5.exit");
+                    ch2=sc.nextInt();
+                    
+                    if(ch2==1)
+                    {
+                         d.cab();
+                        d.pf();
+                    }
+
+                    if(ch2==4)
+                    {
+					    m.cab();
+                        m.pf();
+                    }
+
+                    if(ch2==2)
+                    {
+                        c.cab();
+                        c.pf();
+                    }
+
+                    if(ch2==3)
+                    {
+                        t.cab();
+                        t.pf();
+                    }
+
+                    if(ch2==5)
+                    break;
+                }while(ch2!=5);
+                    
+            }
+			if(ch1==5)
 			{
 				System.out.println("Thank You");
 				System.exit(0);
@@ -194,7 +279,7 @@ public class AbstractionProject
 
 
 
-		}while(ch1!=4);
+		}while(ch1!=5);
 		
 	}
 }
